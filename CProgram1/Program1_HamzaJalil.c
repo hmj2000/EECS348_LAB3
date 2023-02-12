@@ -5,7 +5,7 @@
 
 float*  read_data_from(char *file-name)// Reads in file
     {
-        float* month_sales_data = (float*)malloc(sizeof(float) * months);
+        float *month_sales_data = (float*)malloc(sizeof(float) * months);
         FILE *fp = fopen(file_bname, "r*");
         for(int i = 0; i < MONTHS; ++i)
             {
@@ -14,7 +14,7 @@ float*  read_data_from(char *file-name)// Reads in file
         return month_sales_data;
     }
 
-void print_data(const char *months, const float*sales)//Prints Month Sales Data
+void print_data(const char *months, const float *sales)//Prints Month Sales Data
     {
         printf("Month Sales\n");
         for(int i = 0; i < MONTHS; ++i)
@@ -23,11 +23,62 @@ void print_data(const char *months, const float*sales)//Prints Month Sales Data
             }
     }
 
-void sales_summary()//Sales Summary
+void sales_summary(const char *months, const float*sales)//Sales Summary
     {
-        // Type double variable for minimum sales amount
-        // Type double variable for maximum sales amount
-        // Type double variable for average sales amount 
+        double min_sales;// Type double variable for minimum sales amount
+        char min_sales_month;// Type char varaibale for month of minimum sales amount
+        double max_sales;// Type double variable for maximum sales amount
+        char max_sales_month;// Type char varaibale for month of maximum sales amount
+        double avg_sales;// Type double variable for average sales amount
+    
+        return min_sales, min_sales_month, max_sales, max_sales_month, avg_sales
+        
+    }
+
+float* return_max_sales(const char *months, const float*sales)
+    {
+        double *max = 0;
+        char *month_max;
+        for(int i = 0; i < MONTHS; ++i)
+            
+            {
+                if (sales[i] > max)
+                {
+                    max = sales[i];
+                    month_max = months[i];
+                }
+            }
+    
+        return max, month_max
+    }
+
+
+float* return_min_sales(const char *months, const float*sales, float*max)
+    {
+        double *min = max;
+        char *month_min;
+        for(int i = 0; i < MONTHS; ++i)
+            
+            {
+                if (sales[i] < min)
+                {
+                    min = sales[i];
+                    month_min = months[i];
+                }
+            }
+    
+        return min, month_min
+    }
+
+float* return_avg_sales(const float*sales)
+    {
+        double *avg = 0;
+        for(int i = 0; i < MONTHS; ++i)
+            {
+                avg = avg + sales[i];
+            }
+        avg = avg / MONTHS;
+        return avg
     }
 
 void six_month_moving_average_report()//Six Month Moving Average Report
