@@ -5,7 +5,6 @@
 
 float  *read_data_from(char *file_name) // Reads in file
     {
-        printf("Started function");
         float *sales = (float*)malloc(sizeof(float) * MONTHS);
         FILE *fp = fopen(file_name, "r*");
 
@@ -13,7 +12,7 @@ float  *read_data_from(char *file_name) // Reads in file
             {
                 fscanf(fp, "%f\n", &sales[i]);
             }
-        printf("Ended function");
+        
         return sales;
     }
 
