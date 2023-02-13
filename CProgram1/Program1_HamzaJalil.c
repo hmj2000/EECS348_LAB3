@@ -18,7 +18,7 @@ float  *read_data_from(char *file_name) // Reads in file
     }
 
 
-void monthy_sales_report(char *months[], float sales[]) // Monthly Sales Report - Prints the months and their respective sales data given from file
+void monthly_sales_report(char *months[], float sales[]) // Monthly Sales Report - Prints the months and their respective sales data given from file
     {
         printf("\nMonthly Report for 2023:\n\n"); // Prints out title
         printf("Month \t\t\t Sales\n"); // Prints out Month and Sales subheading
@@ -197,16 +197,15 @@ int main()
     {
         char file_name[30];
         //printf("What is the input file: \n");
-        //scanf("%s", file_name);
-        //float sales[] = {23458.01, 40112.00, 56011.85, 37820.88, 37904.67, 60200.22, 72400.31, 56210.89,  67230.84, 68233.12, 80950.34, 95225.22};
+        //scanf("%s", file_name); // For some reason my scan function was not working so I used a direct file name
+
         float *sales = read_data_from("Sales.txt");
-        printf("\n%.2f", sales[5]);
         char *months[] = {"January", "February", "March" , "April" , "May" , "June" , "July" , "August" , "September" , "October" , "November" , "December"}; // Initialise an array to store Months
 
-        //monthy_sales_report(months, sales);
-        //sales_summary(months, sales);
-        //six_month_moving_average_report(sales);
-        //sales_report(months, sales);
+        monthly_sales_report(months, sales);
+        sales_summary(months, sales);
+        six_month_moving_average_report(sales);
+        sales_report(months, sales);
         return 0;
     }
 
