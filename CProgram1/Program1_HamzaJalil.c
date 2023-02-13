@@ -87,7 +87,20 @@ void sales_summary(char *months[], float sales[]) //Sales Summary
         
     }
 
-void six_month_moving_average_report(const float *sales) //Six Month Moving Average Report
+float six_month_moving_average (int start_month, int end_month, float sales[])
+    {
+        float avg = 0;
+        float temp = 0;
+        for(int i = start_month - 1; i < end_month; ++i)
+            {
+                temp = sales[i];
+                avg = avg + temp;
+            }
+        
+        return avg;
+    }
+
+void six_month_moving_average_report(float sales[]) //Six Month Moving Average Report
     {
         float moving_average_1; // Type float variable for sales amount for Janurary to June
         moving_average_1 = six_month_moving_average (1, 6, sales);
@@ -104,23 +117,14 @@ void six_month_moving_average_report(const float *sales) //Six Month Moving Aver
         float moving_average_7; // Type float variable for sales amount for July to December
         moving_average_7 = six_month_moving_average (7, 12, sales);
     
-        printf(" Janurary to June:%s \n", moving_average_1);
-        printf(" February to July :%s \n", moving_average_2);
-        printf(" March to August :%s \n", moving_average_3);
-        printf(" April to September :%s \n", moving_average_4);
-        printf(" May to October :%s \n", moving_average_5);
-        printf(" June to November :%s \n", moving_average_6);
-        printf(" July to December :%s \n", moving_average_7);
-    }
-
-float six_month_moving_average (int start_month, int end_month, const float *sales)
-    {
-        float avg = 0;
-        for(int i = start_month - 1; i < end_month; ++i)
-            {
-                avg = avg + sales[i];
-            }
-        return avg
+        printf(" Janurary to June: \t\t $%.2f \n", moving_average_1);
+        printf(" February to July: \t\t $%.2f \n", moving_average_2);
+        printf(" March to August: \t\t $%.2f \n", moving_average_3);
+        printf(" April to September: \t $%.2f \n", moving_average_4);
+        printf(" May to October: \t\t $%.2f \n", moving_average_5);
+        printf(" June to November: \t\t $%.2f \n", moving_average_6);
+        printf(" July to December: \t\t $%.2f \n", moving_average_7);
+        
     }
 
 void sales_report() //Sales Report (Highest to Lowest)
