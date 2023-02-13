@@ -3,16 +3,20 @@
 
 #define MONTHS 12
 
-float*  read_data_from(char *file-name) // Reads in file
+float  *read_data_from(char *file_name) // Reads in file
     {
-        float *month_sales_data = (float*)malloc(sizeof(float) *months);
-        FILE *fp = fopen(file_bname, "r*");
+        printf("Started function");
+        float *sales = (float*)malloc(sizeof(float) * MONTHS);
+        FILE *fp = fopen(file_name, "r*");
+
         for(int i = 0; i < MONTHS; ++i)
             {
-                fscanf(fp, "%f\n", &month_sales_data[i]);
+                fscanf(fp, "%f\n", &sales[i]);
             }
-        return month_sales_data;
+        printf("Ended function");
+        return sales;
     }
+
 
 void monthy_sales_report(char *months[], float sales[]) // Monthly Sales Report - Prints the months and their respective sales data given from file
     {
@@ -189,11 +193,20 @@ void sales_report(char *months[], float sales[]) //Sales Report (Highest to Lowe
             }
     }
 
-
 int main()
     {
+        char file_name[30];
+        //printf("What is the input file: \n");
+        //scanf("%s", file_name);
+        //float sales[] = {23458.01, 40112.00, 56011.85, 37820.88, 37904.67, 60200.22, 72400.31, 56210.89,  67230.84, 68233.12, 80950.34, 95225.22};
         float *sales = read_data_from("Sales.txt");
-        conts char *months[] = {"January", "February", "March" , "April" , "May" , "June" , "July" , "August" , "September" , "October" , "November" , "December"};
-        print_data(months, sales);
+        printf("\n%.2f", sales[5]);
+        char *months[] = {"January", "February", "March" , "April" , "May" , "June" , "July" , "August" , "September" , "October" , "November" , "December"}; // Initialise an array to store Months
+
+        //monthy_sales_report(months, sales);
+        //sales_summary(months, sales);
+        //six_month_moving_average_report(sales);
+        //sales_report(months, sales);
         return 0;
     }
+
