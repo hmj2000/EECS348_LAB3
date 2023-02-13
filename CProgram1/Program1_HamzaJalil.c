@@ -23,68 +23,67 @@ void print_data(const char *months, const float *sales) //Prints Month Sales Dat
             }
     }
 
-float* return_max_sales(const char *months, const float *sales)
+float return_max_sales(char *months[], float sales[], float *max_sales)
     {
-        float *max = 0;
+        float max = 0;
         char *month_max;
+        float temp = 0;
     
         for(int i = 0; i < MONTHS; ++i)
             {
-                if (sales[i] > max)
+                temp = sales[i];
+                if (temp > max)
                 {
-                    max = sales[i];
+                    max = temp;
                     month_max = months[i];
                 }
             }
-    
-        return max, month_max
+        printf("Maximum sales: $%.2f \t", max);
+        printf("(%s) \n", month_max);
+        *max_sales = max;
     }
 
-
-float* return_min_sales(const char *months, const float *sales, float *max)
+void return_min_sales(char *months[], float sales[], float *max_sales)
     {
-        float *min = max;
+        float min = *max_sales;
         char *month_min;
+        float temp = 0;
     
         for(int i = 0; i < MONTHS; ++i)
             {
-                if (sales[i] < min)
+                temp = sales[i];
+                if (temp < min)
                 {
-                    min = sales[i];
+                    min = temp;
                     month_min = months[i];
                 }
             }
-    
-        return min, month_min
+        printf("Minimum sales: $%.2f \t", min);
+        printf("(%s) \n", month_min);
+        
     }
 
-float* return_avg_sales(const float *sales)
+void return_avg_sales(float sales[])
     {
-        float *avg = 0;
+        float temp = 0;
+        float avg = 0;
     
         for(int i = 0; i < MONTHS; ++i)
             {
-                avg = avg + sales[i];
+                temp = sales[i];
+                avg = avg + temp;
             }
     
-        avg = avg / MONTHS;
-        return avg
+        avg = avg / 12;
+        printf("Average sales: $%.2f \n", avg);
     }
 
-void sales_summary(const char *months, const float *sales) //Sales Summary
+void sales_summary(char *months[], float sales[]) //Sales Summary
     {
         float max_sales; // Type float variable for maximum sales amount
-        char max_sales_month; // Type char varaibale for month of maximum sales amount
-        max_sales, max_sales_month = return_max_sales(months, sales);
-        float min_sales; // Type float variable for minimum sales amount
-        char min_sales_month; // Type char varaibale for month of minimum sales amount
-        min_sales, min_sales_month = return_min_sales(months, sales, &max_sales)
-        float avg_sales; // Type float variable for average sales amount
-        avg_sales = return_avg_sales(sales)
-    
-        printf("Minimum Sales: %s    $%s \n", min_sales, min_sales_month); 
-        printf("Maximum Sales: %s    $%s \n", max_sales, max_sales_month); 
-        printf("Average Sales: %s \n", avg_sales);
+        return_max_sales(months, sales, &max_sales);
+        return_min_sales(months, sales, &max_sales);
+        return_avg_sales(sales); // Type float variable for average sales amount
         
     }
 
